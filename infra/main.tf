@@ -86,6 +86,6 @@ resource "aws_lambda_function" "myfunc" {
   role              = aws_iam_role.iam_for_lambda.arn
   handler           = "myfunc.lambda_handler"
   runtime           = "python3.8"
-  
+  depends_on        = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
 
