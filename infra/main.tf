@@ -1,4 +1,3 @@
-
 resource "aws_iam_role" "iam_for_lambda" {
   name = "iam_for_lambda"
 
@@ -89,3 +88,6 @@ resource "aws_lambda_function" "myfunc" {
   depends_on        = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
 
+resource "dynamodb" "name" {
+  
+}
