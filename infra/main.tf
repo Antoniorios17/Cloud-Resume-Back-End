@@ -122,14 +122,6 @@ resource "aws_dynamodb_table_item" "views_counter_item" {
 }
 ITEM
 
-  
-#   item = <<ITEM
-# {
-#   "id": {"S": "1"},
-#   "views": {"N": "191"}
-# }
-# ITEM
-  # action = "update"
   lifecycle {
     ignore_changes = [item]
   }
