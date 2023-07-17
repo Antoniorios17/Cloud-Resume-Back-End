@@ -88,6 +88,26 @@ resource "aws_lambda_function" "myfunc" {
   depends_on        = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
 
-resource "dynamodb" "name" {
-  
+resource "aws_dynamodb_table" "cloudresume-test" {
+  name         = "cloudresume-test"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "id"
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+
+
+  tags = {
+    Name        = "project"
+    Environment = "Cloud Resume Challenge"
+    project     = "Cloud Resume Challenge"
+  }
+
+  lifecycle {
+    
+    create_before_destroy = true
+  }
 }
+
