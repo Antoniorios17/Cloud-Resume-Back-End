@@ -111,3 +111,26 @@ resource "aws_dynamodb_table" "cloudresume-test" {
   }
 }
 
+resource "aws_dynamodb_table_item" "views_counter_item" {
+  table_name = aws_dynamodb_table.cloudresume-test.name
+  hash_key   = aws_dynamodb_table.cloudresume-test.hash_key
+
+  item = <<ITEM
+{
+  "id": {"S": "1"},
+  "views": {"N": "191"}
+}
+ITEM
+
+  
+#   item = <<ITEM
+# {
+#   "id": {"S": "1"},
+#   "views": {"N": "191"}
+# }
+# ITEM
+  # action = "update"
+  lifecycle {
+    ignore_changes = [item]
+  }
+}
